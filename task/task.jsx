@@ -4,6 +4,7 @@ import { formatDistanceToNow } from 'date-fns';
 import clsx from 'clsx';
 import EditTask from '../edit-task/edit-task';
 import './task.css';
+import Timer from '../timer/timer';
 
 const Task = ({ id, description, deleteTask, onToggleDone, done, dataTask, editTask }) => {
   const [onEditTask, enableEditTask] = useState(false);
@@ -16,6 +17,7 @@ const Task = ({ id, description, deleteTask, onToggleDone, done, dataTask, editT
             <input className="toggle" type="checkbox" onChange={onToggleDone} checked={done} />
             <label>
               <span className="description">{description}</span>
+				  <Timer />
               <span className="created">
                 created{' '}
                 {formatDistanceToNow(dataTask, {
