@@ -20,5 +20,13 @@
 	flex-basis: 100%;
 }
 .timer div button {
-	margin-bottom: -5px;
+	font-size: 14px;
+}
+
+.icon-pause:after {
+	content: '⏸';
+}
+
+.icon-play:after {
+	content: '▶';
 }
