@@ -4,9 +4,9 @@ import { formatDistanceToNow } from 'date-fns';
 import clsx from 'clsx';
 import EditTask from '../edit-task/edit-task';
 import './task.css';
-import Timer from '../timer/timer';
+import App from '../timer/new-timer';
 
-const Task = ({ id, description, deleteTask, onToggleDone, done, dataTask, editTask }) => {
+const Task = ({ id, description, minutes, seconds, deleteTask, onToggleDone, done, dataTask, editTask }) => {
   const [onEditTask, enableEditTask] = useState(false);
 
   return (
@@ -17,7 +17,7 @@ const Task = ({ id, description, deleteTask, onToggleDone, done, dataTask, editT
             <input className="toggle" type="checkbox" onChange={onToggleDone} checked={done} />
             <label>
               <span className="description">{description}</span>
-				  <Timer />
+				  <App minutes={minutes} seconds={seconds} />
               <span className="created">
                 created{' '}
                 {formatDistanceToNow(dataTask, {
@@ -52,6 +52,8 @@ Task.defaultProps = {
   deleteTask: () => {},
   editTask: () => {},
   description: 'Тестовый Task',
+  minutes: 'Тестовый Task',
+  seconds: 'Тестовый Task',
   dataTask: new Date(),
 };
 
@@ -62,6 +64,8 @@ Task.propTypes = {
   deleteTask: PropTypes.func,
   editTask: PropTypes.func,
   description: PropTypes.string,
+  minutes: PropTypes.string,
+  seconds: PropTypes.string,
   dataTask: PropTypes.instanceOf(),
 };
 

@@ -11,14 +11,16 @@ const TodoApp = () => {
   const generateNewId = (arr) =>
     arr.length === 0 ? 0 : [...arr].sort((itemA, itemB) => itemB.id - itemA.id)[0].id + 1;
 
-  const addTask = (description) => {
+  const addTask = (description, minutes = 0, seconds = 0) => {
     const newId = generateNewId(todoData);
 
     const newTask = {
       description,
       done: false,
       id: newId,
-      dataTask: new Date(),
+		dataTask: new Date(),
+		minutes,
+		seconds,
     };
 
     const newTodoData = [...todoData, newTask];
